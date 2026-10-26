@@ -1,1092 +1,1723 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SperX | Digital Loyalty Programs for Local Businesses</title>
-  <meta name="description" content="Create digital loyalty programs with SperX. Let customers join by QR code and manage digital stamps or points, rewards, redemptions, and customer loyalty activity.">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom Color Systems & Theme Variables -->
-  <style>
-    :root {
-      --background: #ffffff;
-      --foreground: #171717;
-      --card-bg: #FDFBF7;
-      --border-color: #E5E2DA;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SperX | Digital Loyalty Programs for Local Businesses</title>
+    <meta
+      name="description"
+      content="Create digital loyalty programs with SperX. Let customers join by QR code and manage digital stamps or points, rewards, redemptions, and customer loyalty activity."
+    />
 
-      /* PRIMARY */
-      --primary: #2d1060;
-      --primary-lightest: #e6ddff;
-      --primary-lighter: #6d4ab0;
-      --primary-light: #4a2687;
-      --primary-dark: #1f0846;
-      --primary-darker: #14042e;
-      --primary-darkest: #0b021a;
-      --primary-foreground: #ffffff;
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-      /* SECONDARY */
-      --secondary: #ffb800;
-      --secondary-lightest: #fff6d1;
-      --secondary-lighter: #ffdf80;
-      --secondary-light: #ffca33;
-      --secondary-dark: #d69500;
-      --secondary-darker: #a37100;
-      --secondary-darkest: #6b4a00;
-      --secondary-foreground: #000000;
-    }
+    <!-- Custom Color Systems & Theme Variables -->
+    <style>
+      :root {
+        --background: #ffffff;
+        --foreground: #171717;
+        --card-bg: #fdfbf7;
+        --border-color: #e5e2da;
 
-    .dark {
-      --background: #0b021a;
-      --foreground: #f3f4f6;
-      --card-bg: #14042e;
-      --border-color: #2d1060;
+        /* PRIMARY */
+        --primary: #2d1060;
+        --primary-lightest: #e6ddff;
+        --primary-lighter: #6d4ab0;
+        --primary-light: #4a2687;
+        --primary-dark: #1f0846;
+        --primary-darker: #14042e;
+        --primary-darkest: #0b021a;
+        --primary-foreground: #ffffff;
 
-      /* PRIMARY (Inverted/Adapted for Dark Mode) */
-      --primary: #6d4ab0;
-      --primary-lightest: #1f0846;
-      --primary-lighter: #4a2687;
-      --primary-light: #8b62db;
-      --primary-dark: #2d1060;
-      --primary-darker: #14042e;
-      --primary-darkest: #ffffff;
-      --primary-foreground: #ffffff;
-
-      /* SECONDARY */
-      --secondary: #ffb800;
-      --secondary-lightest: #6b4a00;
-      --secondary-lighter: #a37100;
-      --secondary-light: #d69500;
-      --secondary-dark: #ffca33;
-      --secondary-darker: #ffdf80;
-      --secondary-darkest: #fff6d1;
-      --secondary-foreground: #000000;
-    }
-
-    body {
-      background-color: var(--background);
-      color: var(--foreground);
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-  </style>
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            sperxPrimary: 'var(--primary)',
-            sperxSecondary: 'var(--secondary)',
-            sperxBg: 'var(--background)',
-            sperxFg: 'var(--foreground)',
-            sperxCard: 'var(--card-bg)',
-            sperxBorder: 'var(--border-color)'
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
-          }
-        }
+        /* SECONDARY */
+        --secondary: #ffb800;
+        --secondary-lightest: #fff6d1;
+        --secondary-lighter: #ffdf80;
+        --secondary-light: #ffca33;
+        --secondary-dark: #d69500;
+        --secondary-darker: #a37100;
+        --secondary-darkest: #6b4a00;
+        --secondary-foreground: #000000;
       }
-    }
-  </script>
-</head>
-<body class="selection:bg-[#ffb800] selection:text-black">
 
-  <!-- Skip to main content link for accessibility -->
-  <a 
-    href="#main-content" 
-    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-[var(--primary)] focus:text-[var(--primary-foreground)] focus:outline-none"
-  >
-    Skip to main content
-  </a>
+      .dark {
+        --background: #0b021a;
+        --foreground: #f3f4f6;
+        --card-bg: #14042e;
+        --border-color: #2d1060;
 
-  <!-- ==========================================
+        /* PRIMARY (Inverted/Adapted for Dark Mode) */
+        --primary: #6d4ab0;
+        --primary-lightest: #1f0846;
+        --primary-lighter: #4a2687;
+        --primary-light: #8b62db;
+        --primary-dark: #2d1060;
+        --primary-darker: #14042e;
+        --primary-darkest: #ffffff;
+        --primary-foreground: #ffffff;
+
+        /* SECONDARY */
+        --secondary: #ffb800;
+        --secondary-lightest: #6b4a00;
+        --secondary-lighter: #a37100;
+        --secondary-light: #d69500;
+        --secondary-dark: #ffca33;
+        --secondary-darker: #ffdf80;
+        --secondary-darkest: #fff6d1;
+        --secondary-foreground: #000000;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+    </style>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              sperxPrimary: "var(--primary)",
+              sperxSecondary: "var(--secondary)",
+              sperxBg: "var(--background)",
+              sperxFg: "var(--foreground)",
+              sperxCard: "var(--card-bg)",
+              sperxBorder: "var(--border-color)",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="selection:bg-[#ffb800] selection:text-black">
+    <!-- Skip to main content link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-[var(--primary)] focus:text-[var(--primary-foreground)] focus:outline-none"
+    >
+      Skip to main content
+    </a>
+
+    <!-- ==========================================
       A. HEADER SECTION
       ========================================== -->
-  <header class="sticky top-0 z-40 bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border-color)] transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <!-- Logo / Wordmark -->
-      <a 
-        href="#" 
-        class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] rounded-lg p-1"
-        aria-label="SperX Home"
+    <header
+      class="sticky top-0 z-40 bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border-color)] transition-colors"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
       >
-        <div class="w-10 h-10 rounded-xl bg-[var(--primary)] flex items-center justify-center text-[var(--primary-foreground)] font-black text-xl tracking-tighter shadow-sm">
-          SX
+        <!-- Logo / Wordmark -->
+        <a
+          href="#"
+          class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] rounded-lg p-1"
+          aria-label="SperX Home"
+        >
+          <div
+            class="w-10 h-10 rounded-xl bg-[var(--primary)] flex items-center justify-center text-[var(--primary-foreground)] font-black text-xl tracking-tighter shadow-sm"
+          >
+            SX
+            <!-- Replace with SperX logo -->
+          </div>
+          <span
+            class="text-2xl font-black tracking-tight text-[var(--foreground)]"
+            >SperX</span
+          >
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden md:flex items-center gap-8"
+          aria-label="Main Navigation"
+        >
+          <a
+            href="#how-it-works"
+            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            >How It Works</a
+          >
+          <a
+            href="#features"
+            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            >Features</a
+          >
+          <a
+            href="#who-its-for"
+            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            >Who It's For</a
+          >
+          <a
+            href="#faq"
+            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            >FAQ</a
+          >
+        </nav>
+
+        <!-- Desktop Auth, Theme Toggle & CTA -->
+        <div class="hidden md:flex items-center gap-4">
+          <!-- Theme Toggle Button -->
+          <button
+            id="theme-toggle"
+            type="button"
+            class="p-2.5 rounded-xl border border-[var(--border-color)] hover:bg-[var(--border-color)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+            aria-label="Toggle theme"
+          >
+            <svg
+              id="theme-icon-sun"
+              class="w-5 h-5 hidden dark:block text-[var(--secondary)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <svg
+              id="theme-icon-moon"
+              class="w-5 h-5 block dark:hidden text-[var(--primary)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </button>
+
+          <a
+            href="/login"
+            class="text-sm font-semibold opacity-90 hover:opacity-100 px-4 py-2 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--primary)] rounded-lg"
+          >
+            Log In
+          </a>
+          <a
+            href="/signup"
+            class="bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+          >
+            Create an Account
+          </a>
         </div>
-        <span class="text-2xl font-black tracking-tight text-[var(--foreground)]">SperX</span>
-      </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
-        <a href="#how-it-works" class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity">How It Works</a>
-        <a href="#features" class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity">Features</a>
-        <a href="#who-its-for" class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity">Who It's For</a>
-        <a href="#faq" class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity">FAQ</a>
-      </nav>
+        <!-- Mobile Controls (Theme Toggle & Menu Button) -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button
+            id="theme-toggle-mobile"
+            type="button"
+            class="p-2 rounded-lg border border-[var(--border-color)]"
+            aria-label="Toggle theme"
+          >
+            <svg
+              class="w-5 h-5 dark:text-[var(--secondary)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+          </button>
 
-      <!-- Desktop Auth, Theme Toggle & CTA -->
-      <div class="hidden md:flex items-center gap-4">
-        <!-- Theme Toggle Button -->
-        <button 
-          id="theme-toggle" 
-          type="button" 
-          class="p-2.5 rounded-xl border border-[var(--border-color)] hover:bg-[var(--border-color)]/20 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-          aria-label="Toggle theme"
-        >
-          <svg id="theme-icon-sun" class="w-5 h-5 hidden dark:block text-[var(--secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <svg id="theme-icon-moon" class="w-5 h-5 block dark:hidden text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-
-        <a 
-          href="/login" 
-          class="text-sm font-semibold opacity-90 hover:opacity-100 px-4 py-2 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--primary)] rounded-lg"
-        >
-          Log In
-        </a>
-        <a 
-          href="/signup" 
-          class="bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
-        >
-          Create an Account
-        </a>
+          <button
+            type="button"
+            id="mobile-menu-btn"
+            class="p-2 rounded-lg hover:bg-[var(--border-color)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Mobile Controls (Theme Toggle & Menu Button) -->
-      <div class="flex items-center gap-2 md:hidden">
-        <button 
-          id="theme-toggle-mobile" 
-          type="button" 
-          class="p-2 rounded-lg border border-[var(--border-color)]"
-          aria-label="Toggle theme"
+      <!-- Mobile Navigation Drawer -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-[var(--background)] border-b border-[var(--border-color)] px-4 pt-2 pb-6 space-y-3 shadow-lg"
+      >
+        <a
+          href="#how-it-works"
+          class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium"
+          >How It Works</a
         >
-          <svg class="w-5 h-5 dark:text-[var(--secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        </button>
-
-        <button 
-          type="button"
-          id="mobile-menu-btn"
-          class="p-2 rounded-lg hover:bg-[var(--border-color)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu"
+        <a
+          href="#features"
+          class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium"
+          >Features</a
         >
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <a
+          href="#who-its-for"
+          class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium"
+          >Who It's For</a
+        >
+        <a
+          href="#faq"
+          class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium"
+          >FAQ</a
+        >
+        <div
+          class="pt-4 border-t border-[var(--border-color)] flex flex-col gap-3"
+        >
+          <a
+            href="/login"
+            class="w-full text-center py-2.5 rounded-xl border border-[var(--primary)] text-sm font-semibold"
+            >Log In</a
+          >
+          <a
+            href="/signup"
+            class="w-full text-center py-2.5 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] text-sm font-semibold shadow-sm"
+            >Create an Account</a
+          >
+        </div>
       </div>
-    </div>
+    </header>
 
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[var(--background)] border-b border-[var(--border-color)] px-4 pt-2 pb-6 space-y-3 shadow-lg">
-      <a href="#how-it-works" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium">How It Works</a>
-      <a href="#features" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium">Features</a>
-      <a href="#who-its-for" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium">Who It's For</a>
-      <a href="#faq" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium">FAQ</a>
-      <div class="pt-4 border-t border-[var(--border-color)] flex flex-col gap-3">
-        <a href="/login" class="w-full text-center py-2.5 rounded-xl border border-[var(--primary)] text-sm font-semibold">Log In</a>
-        <a href="/signup" class="w-full text-center py-2.5 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] text-sm font-semibold shadow-sm">Create an Account</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- ==========================================
+    <main id="main-content">
+      <!-- ==========================================
         B. HERO SECTION
         ========================================== -->
-    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          <!-- Left Column: Copy & CTAs -->
-          <div class="lg:col-span-7 space-y-6 text-left">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-md font-bold tracking-wider text-black dark:text-white">
-              <span class="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"></span>
-              Up to +25% Boost in Revenue
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08]">
-              Turn Repeat Customers Into More Sales.
-            </h1>
-
-            <ul class="space-y-3 pt-2 text-base sm:text-lg text-[var(--foreground)]/85">
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]">
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12.5 19H4a2 2 0 01-2-2V7a2 2 0 012-2h16a2 2 0 012 2v4"/><path d="M2 10h20"/><path d="M6 14h2"/><path d="m16 17 2 2 4-4"/>
-                  </svg>
-                </span>
-                <span>Design the loyalty program that works for you</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]">
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="5" height="5" x="3" y="3" rx="1"/>
-                    <rect width="5" height="5" x="16" y="3" rx="1"/>
-                    <rect width="5" height="5" x="3" y="16" rx="1"/>
-                    <path d="M21 16h-3a2 2 0 0 0-2 2v3"/>
-                    <path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/>
-                  </svg>
-                </span>
-                <span>Simple to setup, sukis join without the hassle</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]">
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M20 11H4"/><path d="M20 7H4"/><path d="M7 21V4a1 1 0 0 1 1-1h4a1 1 0 0 1 0 12H7"/>
-                  </svg>
-                </span>
-                <span>Built for Filipino small to medium businesses</span>
-              </li>
-            </ul>
-
-            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <a 
-                href="https://merchant.app.sperx.app" 
-                target="_blank"
-                class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 text-base font-bold shadow-lg transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+      <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center"
+          >
+            <!-- Left Column: Copy & CTAs -->
+            <div class="lg:col-span-7 space-y-6 text-left">
+              <div
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-md font-bold tracking-wider text-black dark:text-white"
               >
-                Start for FREE
-              </a>
-              <!-- <a 
+                <span
+                  class="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse"
+                ></span>
+                Up to +25% Boost in Revenue
+              </div>
+
+              <h1
+                class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08]"
+              >
+                Turn Repeat Customers Into More Sales.
+              </h1>
+
+              <ul
+                class="space-y-3 pt-2 text-base sm:text-lg text-[var(--foreground)]/85"
+              >
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12.5 19H4a2 2 0 01-2-2V7a2 2 0 012-2h16a2 2 0 012 2v4"
+                      />
+                      <path d="M2 10h20" />
+                      <path d="M6 14h2" />
+                      <path d="m16 17 2 2 4-4" />
+                    </svg>
+                  </span>
+                  <span>Design the loyalty program that works for you</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect width="5" height="5" x="3" y="3" rx="1" />
+                      <rect width="5" height="5" x="16" y="3" rx="1" />
+                      <rect width="5" height="5" x="3" y="16" rx="1" />
+                      <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+                      <path d="M21 21v.01" />
+                      <path d="M12 7v3a2 2 0 0 1-2 2H7" />
+                      <path d="M3 12h.01" />
+                      <path d="M12 3h.01" />
+                      <path d="M12 16v.01" />
+                      <path d="M16 12h1" />
+                      <path d="M21 12v.01" />
+                      <path d="M12 21v-1" />
+                    </svg>
+                  </span>
+                  <span>Simple to setup, sukis join without the hassle</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 11H4" />
+                      <path d="M20 7H4" />
+                      <path d="M7 21V4a1 1 0 0 1 1-1h4a1 1 0 0 1 0 12H7" />
+                    </svg>
+                  </span>
+                  <span>Built for Filipino small to medium businesses</span>
+                </li>
+              </ul>
+
+              <div
+                class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+              >
+                <a
+                  href="https://merchant.app.sperx.app"
+                  target="_blank"
+                  class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 text-base font-bold shadow-lg transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+                >
+                  Start for FREE
+                </a>
+                <!-- <a 
                 href="#how-it-works" 
                 class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:opacity-80 text-base font-bold transition-all focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               >
                 See How It Works
               </a> -->
+              </div>
+
+              <p class="text-xs font-medium opacity-60 pt-1">
+                Create your account and
+                <span
+                  class="text-[var(--primary)] dark:text-[var(--secondary)] font-bold"
+                  >design your Loyalty Program</span
+                >
+                now!
+              </p>
             </div>
 
-            <p class="text-xs font-medium opacity-60 pt-1">
-              Create your account and <span class="text-[var(--primary)] dark:text-[var(--secondary)] font-bold">design your Loyalty Program</span> now!
-            </p>
-          </div>
+            <!-- Right Column: Product Visual / Mockup -->
+            <div class="lg:col-span-5 relative">
+              <div class="relative mx-auto max-w-md lg:max-w-none">
+                <div
+                  class="absolute -inset-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-3xl blur-xl opacity-20"
+                ></div>
 
-          <!-- Right Column: Product Visual / Mockup -->
-          <div class="lg:col-span-5 relative">
-            <div class="relative mx-auto max-w-md lg:max-w-none">
-              <div class="absolute -inset-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-3xl blur-xl opacity-20"></div>
-              
-              <div class="relative bg-[var(--primary)] rounded-3xl p-6 text-white shadow-2xl border border-white/10">
-                <div class="flex items-center justify-between pb-6 border-b border-white/10">
-                  <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-[var(--secondary)] text-black font-black flex items-center justify-center text-sm">
-                      CB
-                    </div>
-                    <div>
-                      <h3 class="text-sm font-bold text-white">Cornerstone Cafe</h3>
-                      <p class="text-xs text-white/60">Digital Loyalty Program</p>
-                    </div>
-                  </div>
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-[var(--secondary)] text-black">
-                    Active
-                  </span>
-                </div>
-
-                <div class="py-6 space-y-4">
-                  <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex items-center justify-between">
-                    <div>
-                      <p class="text-xs text-white/60">Customer Stamp Card</p>
-                      <p class="text-xl font-black mt-0.5 text-white">4 / 8 Stamps</p>
-                    </div>
-                    <div class="w-12 h-12 rounded-xl bg-[var(--secondary)]/10 border border-[var(--secondary)]/30 flex items-center justify-center text-[var(--secondary)]">
-                      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
-                    <div class="flex justify-between text-xs mb-2">
-                      <span class="text-white/60">Reward Progress</span>
-                      <span class="text-[var(--secondary)] font-semibold">Free Coffee on 8th Stamp</span>
-                    </div>
-                    <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                      <div class="bg-[var(--secondary)] h-full rounded-full w-1/2"></div>
-                    </div>
-                  </div>
-
-                  <div class="p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center gap-4">
-                    <div class="w-16 h-16 bg-white p-2 rounded-xl flex items-center justify-center shrink-0">
-                      <div class="w-full h-full bg-[var(--primary)] rounded flex items-center justify-center text-[var(--secondary)] font-mono text-[10px]">
-                        QR
+                <div
+                  class="relative bg-[var(--primary)] rounded-3xl p-6 text-white shadow-2xl border border-white/10"
+                >
+                  <div
+                    class="flex items-center justify-between pb-6 border-b border-white/10"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-9 h-9 rounded-lg bg-[var(--secondary)] text-black font-black flex items-center justify-center text-sm"
+                      >
+                        CB
+                      </div>
+                      <div>
+                        <h3 class="text-sm font-bold text-white">
+                          Cornerstone Cafe
+                        </h3>
+                        <p class="text-xs text-white/60">
+                          Digital Loyalty Program
+                        </p>
                       </div>
                     </div>
-                    <div>
-                      <p class="text-xs font-bold text-white">Scan to join program</p>
-                      <p class="text-[11px] text-white/60 mt-0.5">Instant web access for customers. No app download required.</p>
+                    <span
+                      class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-[var(--secondary)] text-black"
+                    >
+                      Active
+                    </span>
+                  </div>
+
+                  <div class="py-6 space-y-4">
+                    <div
+                      class="bg-white/5 rounded-2xl p-4 border border-white/10 flex items-center justify-between"
+                    >
+                      <div>
+                        <p class="text-xs text-white/60">Customer Stamp Card</p>
+                        <p class="text-xl font-black mt-0.5 text-white">
+                          4 / 8 Stamps
+                        </p>
+                      </div>
+                      <div
+                        class="w-12 h-12 rounded-xl bg-[var(--secondary)]/10 border border-[var(--secondary)]/30 flex items-center justify-center text-[var(--secondary)]"
+                      >
+                        <svg
+                          class="w-6 h-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div
+                      class="bg-white/5 rounded-2xl p-4 border border-white/10"
+                    >
+                      <div class="flex justify-between text-xs mb-2">
+                        <span class="text-white/60">Reward Progress</span>
+                        <span class="text-[var(--secondary)] font-semibold"
+                          >Free Coffee on 8th Stamp</span
+                        >
+                      </div>
+                      <div
+                        class="w-full bg-white/10 h-2 rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="bg-[var(--secondary)] h-full rounded-full w-1/2"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center gap-4"
+                    >
+                      <div
+                        class="w-16 h-16 bg-white p-2 rounded-xl flex items-center justify-center shrink-0"
+                      >
+                        <div
+                          class="w-full h-full bg-[var(--primary)] rounded flex items-center justify-center text-[var(--secondary)] font-mono text-[10px]"
+                        >
+                          QR
+                        </div>
+                      </div>
+                      <div>
+                        <p class="text-xs font-bold text-white">
+                          Scan to join program
+                        </p>
+                        <p class="text-[11px] text-white/60 mt-0.5">
+                          Instant web access for customers. No app download
+                          required.
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/60">
-                  <span>SperX Merchant Hub</span>
-                  <span class="text-[var(--secondary)] font-medium">Live Sync</span>
+                  <div
+                    class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/60"
+                  >
+                    <span>SperX Merchant Hub</span>
+                    <span class="text-[var(--secondary)] font-medium"
+                      >Live Sync</span
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ==========================================
+      <!-- ==========================================
         C. PROBLEM AND SOLUTION
         ========================================== -->
-    <section class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-            A great first visit is just the beginning.
-          </h2>
-          <p class="text-base sm:text-lg opacity-80 leading-relaxed">
-            Your customers already know what they love about your business. The challenge is giving them another reason to return.<br class="hidden sm:inline">
-            Loyalty shouldn't mean juggling paper stamp cards or making your team manage a complicated system. SperX gives you a digital way to build a loyalty program around the customers you want to see again.
-          </p>
+      <section
+        class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)]"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+              A great first visit is just the beginning.
+            </h2>
+            <p class="text-base sm:text-lg opacity-80 leading-relaxed">
+              Your customers already know what they love about your business.
+              The challenge is giving them another reason to return.<br
+                class="hidden sm:inline"
+              />
+              Loyalty shouldn't mean juggling paper stamp cards or making your
+              team manage a complicated system. SperX gives you a digital way to
+              build a loyalty program around the customers you want to see
+              again.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm"
+                >
+                  01
+                </div>
+                <h3 class="text-xl font-bold mb-3">Encourage return visits</h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Give customers a loyalty experience that makes coming back
+                  feel rewarding.
+                </p>
+              </div>
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]"
+              >
+                Built for repeat engagement
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm"
+                >
+                  02
+                </div>
+                <h3 class="text-xl font-bold mb-3">Go digital with loyalty</h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Replace the need to manage loyalty through paper cards with a
+                  digital program.
+                </p>
+              </div>
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]"
+              >
+                Zero paper clutter
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm"
+                >
+                  03
+                </div>
+                <h3 class="text-xl font-bold mb-3">
+                  Keep your program organized
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Manage your loyalty program, stamps or points, rewards, and
+                  redemptions through SperX.
+                </p>
+              </div>
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]"
+              >
+                Unified merchant tools
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm">
-                01
-              </div>
-              <h3 class="text-xl font-bold mb-3">Encourage return visits</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Give customers a loyalty experience that makes coming back feel rewarding.
-              </p>
-            </div>
-            <div class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]">
-              Built for repeat engagement
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm">
-                02
-              </div>
-              <h3 class="text-xl font-bold mb-3">Go digital with loyalty</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Replace the need to manage loyalty through paper cards with a digital program.
-              </p>
-            </div>
-            <div class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]">
-              Zero paper clutter
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm">
-                03
-              </div>
-              <h3 class="text-xl font-bold mb-3">Keep your program organized</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Manage your loyalty program, stamps or points, rewards, and redemptions through SperX.
-              </p>
-            </div>
-            <div class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]">
-              Unified merchant tools
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
+      <!-- ==========================================
         D. HOW SPERX WORKS
         ========================================== -->
-    <section id="how-it-works" class="py-20 bg-[var(--background)]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-            Your loyalty program. Three simple steps.
-          </h2>
-          <p class="text-base sm:text-lg opacity-80">
-            Get your digital loyalty program ready and make it easy for customers to join.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative">
-            <div class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm">
-              1
-            </div>
-            <h3 class="text-xl font-bold mt-2 mb-3">Create your loyalty program.</h3>
-            <p class="opacity-80 text-sm leading-relaxed">
-              Set up a digital loyalty experience that fits your business. Choose the supported stamps or points approach and define your rewards according to the options available in SperX.
+      <section id="how-it-works" class="py-20 bg-[var(--background)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+              Your loyalty program. Three simple steps.
+            </h2>
+            <p class="text-base sm:text-lg opacity-80">
+              Get your digital loyalty program ready and make it easy for
+              customers to join.
             </p>
           </div>
 
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative">
-            <div class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm">
-              2
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative"
+            >
+              <div
+                class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm"
+              >
+                1
+              </div>
+              <h3 class="text-xl font-bold mt-2 mb-3">
+                Create your loyalty program.
+              </h3>
+              <p class="opacity-80 text-sm leading-relaxed">
+                Set up a digital loyalty experience that fits your business.
+                Choose the supported stamps or points approach and define your
+                rewards according to the options available in SperX.
+              </p>
             </div>
-            <h3 class="text-xl font-bold mt-2 mb-3">Let customers scan to join.</h3>
-            <p class="opacity-80 text-sm leading-relaxed">
-              Display your program's QR code where customers can see it. They scan the code to access your digital loyalty program through SperX's web-based experience.
-            </p>
-          </div>
 
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative">
-            <div class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm">
-              3
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative"
+            >
+              <div
+                class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm"
+              >
+                2
+              </div>
+              <h3 class="text-xl font-bold mt-2 mb-3">
+                Let customers scan to join.
+              </h3>
+              <p class="opacity-80 text-sm leading-relaxed">
+                Display your program's QR code where customers can see it. They
+                scan the code to access your digital loyalty program through
+                SperX's web-based experience.
+              </p>
             </div>
-            <h3 class="text-xl font-bold mt-2 mb-3">Manage loyalty and rewards.</h3>
-            <p class="opacity-80 text-sm leading-relaxed">
-              Use SperX's supported program tools to manage stamps or points, track rewards and redemptions, and review available customer activity and loyalty analytics.
-            </p>
+
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative"
+            >
+              <div
+                class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm"
+              >
+                3
+              </div>
+              <h3 class="text-xl font-bold mt-2 mb-3">
+                Manage loyalty and rewards.
+              </h3>
+              <p class="opacity-80 text-sm leading-relaxed">
+                Use SperX's supported program tools to manage stamps or points,
+                track rewards and redemptions, and review available customer
+                activity and loyalty analytics.
+              </p>
+            </div>
           </div>
 
-        </div>
-
-        <div class="mt-12 text-center bg-[var(--primary)] text-white rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
-          <div class="text-left space-y-1">
-            <h4 class="text-xl font-bold">Ready to set up your loyalty program?</h4>
-            <p class="text-sm opacity-80">Start your free trial and explore how digital loyalty can fit into your business.</p>
-          </div>
-          <a 
-            href="/signup" 
-            class="shrink-0 bg-[var(--secondary)] text-black hover:opacity-90 px-6 py-3.5 rounded-xl font-bold text-sm shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]"
+          <div
+            class="mt-12 text-center bg-[var(--primary)] text-white rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl"
           >
-            Create Your First Loyalty Program
-          </a>
+            <div class="text-left space-y-1">
+              <h4 class="text-xl font-bold">
+                Ready to set up your loyalty program?
+              </h4>
+              <p class="text-sm opacity-80">
+                Start your free trial and explore how digital loyalty can fit
+                into your business.
+              </p>
+            </div>
+            <a
+              href="/signup"
+              class="shrink-0 bg-[var(--secondary)] text-black hover:opacity-90 px-6 py-3.5 rounded-xl font-bold text-sm shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]"
+            >
+              Create Your First Loyalty Program
+            </a>
+          </div>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- ==========================================
+      <!-- ==========================================
         E. PRODUCT FEATURES
         ========================================== -->
-    <section id="features" class="py-20 bg-[var(--card-bg)] border-t border-[var(--border-color)]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-            Everything you need to run digital loyalty.
-          </h2>
-          <p class="text-base sm:text-lg opacity-80">
-            Build your program, make enrollment simple, and manage the loyalty experience in one place.
-          </p>
+      <section
+        id="features"
+        class="py-20 bg-[var(--card-bg)] border-t border-[var(--border-color)]"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+              Everything you need to run digital loyalty.
+            </h2>
+            <p class="text-base sm:text-lg opacity-80">
+              Build your program, make enrollment simple, and manage the loyalty
+              experience in one place.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h.01M16 16h1m-1-4h2m-4-8h2m-6 0H6v2m0 4v2m0 4h2"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">QR code enrollment</h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Make joining your loyalty program straightforward. Customers
+                  scan your program's QR code to get started.
+                </p>
+              </div>
+              <div
+                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+              >
+                Frictionless onboarding
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Digital loyalty cards</h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Give customers a digital alternative to paper loyalty cards,
+                  accessible through SperX's web-based experience.
+                </p>
+              </div>
+              <div
+                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+              >
+                Web-based convenience
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Digital stamps or points</h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Structure your loyalty program around the supported stamp or
+                  points options that best fit your business.
+                </p>
+              </div>
+              <div
+                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+              >
+                Flexible structures
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">
+                  Rewards and redemption tracking
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Manage your loyalty rewards and keep track of redemptions
+                  using the available SperX tools.
+                </p>
+              </div>
+              <div
+                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+              >
+                Streamlined fulfillment
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">
+                  Customer activity and loyalty analytics
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Review the customer activity and loyalty insights available in
+                  your merchant dashboard to better understand your program.
+                </p>
+              </div>
+              <div
+                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+              >
+                Actionable insights
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">
+                  Create and manage your programs
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Set up and manage your digital loyalty programs through
+                  SperX's web-based merchant experience.
+                </p>
+              </div>
+              <div
+                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+              >
+                Centralized control
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 text-center">
+            <a
+              href="/signup"
+              class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 font-bold text-base shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+            >
+              Start Your Free Trial
+            </a>
+          </div>
         </div>
+      </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h.01M16 16h1m-1-4h2m-4-8h2m-6 0H6v2m0 4v2m0 4h2" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mb-3">QR code enrollment</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Make joining your loyalty program straightforward. Customers scan your program's QR code to get started.
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60">
-              Frictionless onboarding
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mb-3">Digital loyalty cards</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Give customers a digital alternative to paper loyalty cards, accessible through SperX's web-based experience.
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60">
-              Web-based convenience
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mb-3">Digital stamps or points</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Structure your loyalty program around the supported stamp or points options that best fit your business.
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60">
-              Flexible structures
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mb-3">Rewards and redemption tracking</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Manage your loyalty rewards and keep track of redemptions using the available SperX tools.
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60">
-              Streamlined fulfillment
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mb-3">Customer activity and loyalty analytics</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Review the customer activity and loyalty insights available in your merchant dashboard to better understand your program.
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60">
-              Actionable insights
-            </div>
-          </div>
-
-          <div class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mb-3">Create and manage your programs</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Set up and manage your digital loyalty programs through SperX's web-based merchant experience.
-              </p>
-            </div>
-            <div class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60">
-              Centralized control
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-12 text-center">
-          <a 
-            href="/signup" 
-            class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 font-bold text-base shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
-          >
-            Start Your Free Trial
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
+      <!-- ==========================================
         F. WHO SPERX IS FOR
         ========================================== -->
-    <section id="who-its-for" class="py-20 bg-[var(--background)]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-            Whatever you serve, loyalty belongs in your business.
-          </h2>
-          <p class="text-base sm:text-lg opacity-80">
-            From neighborhood cafés to service businesses and local shops, digital loyalty gives customers another reason to choose you again.
-          </p>
+      <section id="who-its-for" class="py-20 bg-[var(--background)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+              Whatever you serve, loyalty belongs in your business.
+            </h2>
+            <p class="text-base sm:text-lg opacity-80">
+              From neighborhood cafés to service businesses and local shops,
+              digital loyalty gives customers another reason to choose you
+              again.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              >
+                ☕
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Cafés and coffee shops</h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Give regulars another reason to stop by for their next coffee.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              >
+                🍽️
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">
+                  Restaurants and food businesses
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Build a loyalty experience that gives diners a reason to
+                  return.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              >
+                ✂️
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">
+                  Salons and service businesses
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Make loyalty part of the experience customers already enjoy.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+            >
+              <div
+                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              >
+                🛍️
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">
+                  Retail and neighborhood shops
+                </h3>
+                <p class="opacity-80 text-sm leading-relaxed">
+                  Create a digital loyalty program around the customers who keep
+                  choosing your store.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 text-center">
+            <a
+              href="/signup"
+              class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 font-bold text-base shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+            >
+              Bring Digital Loyalty to Your Business
+            </a>
+          </div>
         </div>
+      </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg">
-              ☕
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Cafés and coffee shops</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Give regulars another reason to stop by for their next coffee.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg">
-              🍽️
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Restaurants and food businesses</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Build a loyalty experience that gives diners a reason to return.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg">
-              ✂️
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Salons and service businesses</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Make loyalty part of the experience customers already enjoy.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg">
-              🛍️
-            </div>
-            <div>
-              <h3 class="text-xl font-bold mb-2">Retail and neighborhood shops</h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Create a digital loyalty program around the customers who keep choosing your store.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-12 text-center">
-          <a 
-            href="/signup" 
-            class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 font-bold text-base shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
-          >
-            Bring Digital Loyalty to Your Business
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
+      <!-- ==========================================
         G. PILOT MERCHANT TRUST SECTION
         ========================================== -->
-    <section class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-xs font-bold tracking-wider uppercase">
-          PILOT PROGRAM
+      <section
+        class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)]"
+      >
+        <div
+          class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6"
+        >
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-xs font-bold tracking-wider uppercase"
+          >
+            PILOT PROGRAM
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+            Built around real business needs.
+          </h2>
+          <p
+            class="text-base sm:text-lg opacity-80 leading-relaxed max-w-2xl mx-auto"
+          >
+            SperX is working with pilot merchants to explore how digital loyalty
+            can fit into the everyday operations of local businesses.<br
+              class="hidden sm:inline"
+            />
+            We're building with the goal of making loyalty easier to launch,
+            easier to manage, and more accessible for customers.
+          </p>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-          Built around real business needs.
-        </h2>
-        <p class="text-base sm:text-lg opacity-80 leading-relaxed max-w-2xl mx-auto">
-          SperX is working with pilot merchants to explore how digital loyalty can fit into the everyday operations of local businesses.<br class="hidden sm:inline">
-          We're building with the goal of making loyalty easier to launch, easier to manage, and more accessible for customers.
-        </p>
-      </div>
-    </section>
+      </section>
 
-    <!-- ==========================================
+      <!-- ==========================================
         H. FREE-TRIAL CTA BANNER
         ========================================== -->
-    <section class="py-16 bg-[var(--primary)] text-white">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-          Your next regular customer could start here.
-        </h2>
-        <p class="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-          Create a digital loyalty program for your business and give customers a simple way to join through a QR code.
-        </p>
-        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href="/signup" 
-            class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--secondary)] text-black hover:opacity-90 text-base font-bold shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]"
+      <section class="py-16 bg-[var(--primary)] text-white">
+        <div
+          class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6"
+        >
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+            Your next regular customer could start here.
+          </h2>
+          <p
+            class="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
           >
-            Create an Account
-          </a>
+            Create a digital loyalty program for your business and give
+            customers a simple way to join through a QR code.
+          </p>
+          <div
+            class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="/signup"
+              class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--secondary)] text-black hover:opacity-90 text-base font-bold shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]"
+            >
+              Create an Account
+            </a>
+          </div>
+          <p class="text-xs text-white/60">
+            Start your free trial. Explore SperX for your business.
+          </p>
         </div>
-        <p class="text-xs text-white/60">
-          Start your free trial. Explore SperX for your business.
-        </p>
-      </div>
-    </section>
+      </section>
 
-    <!-- ==========================================
+      <!-- ==========================================
         I. FAQ SECTION
         ========================================== -->
-    <section id="faq" class="py-20 bg-[var(--background)]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center space-y-4 mb-16">
-          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-            Questions about SperX?
-          </h2>
-          <p class="text-base sm:text-lg opacity-80">
-            Here's what to know before getting started.
-          </p>
+      <section id="faq" class="py-20 bg-[var(--background)]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center space-y-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+              Questions about SperX?
+            </h2>
+            <p class="text-base sm:text-lg opacity-80">
+              Here's what to know before getting started.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-0"
+                  data-index="0"
+                >
+                  <span class="text-base sm:text-lg">What is SperX?</span>
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-0"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                SperX is a web-based digital loyalty app that lets businesses
+                create and manage loyalty programs. Customers can join a program
+                by scanning its QR code.
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-1"
+                  data-index="1"
+                >
+                  <span class="text-base sm:text-lg"
+                    >How do customers join my loyalty program?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-1"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                You create a loyalty program in SperX and make its QR code
+                available to customers. They scan the code to access your
+                program through SperX's web-based experience.
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-2"
+                  data-index="2"
+                >
+                  <span class="text-base sm:text-lg"
+                    >Do customers need to download an app?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-2"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                SperX is web-based, so customers can access the loyalty
+                experience through a browser. Do not promise that no additional
+                steps or account requirements apply unless this has been
+                verified for the actual customer enrollment flow.
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-3"
+                  data-index="3"
+                >
+                  <span class="text-base sm:text-lg"
+                    >What types of loyalty programs can I create?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-3"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                SperX supports digital loyalty programs using stamps or points,
+                along with reward and redemption management. The specific
+                options depend on the features available in your merchant
+                account.
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-4"
+                  data-index="4"
+                >
+                  <span class="text-base sm:text-lg"
+                    >Can I track rewards and customer activity?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-4"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                Yes. SperX includes rewards and redemption tracking, as well as
+                customer activity and loyalty analytics. The information
+                available depends on the reporting tools provided by the
+                product.
+              </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-5"
+                  data-index="5"
+                >
+                  <span class="text-base sm:text-lg">Is SperX free?</span>
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-5"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                SperX offers a free trial followed by a subscription. Review the
+                current plan details and applicable terms during signup before
+                choosing a plan.
+              </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-6"
+                  data-index="6"
+                >
+                  <span class="text-base sm:text-lg"
+                    >How long is the free trial?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-6"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                Display the actual confirmed trial duration and applicable
+                conditions. If the duration has not been confirmed, do not
+                invent a number of days or publish a misleading answer.
+              </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-7"
+                  data-index="7"
+                >
+                  <span class="text-base sm:text-lg"
+                    >Do I need technical skills to use SperX?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-7"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                SperX is a web-based loyalty experience where merchants create
+                and manage their programs. Explore the product during your trial
+                to see how it fits your business workflow.
+              </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div
+              class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all"
+            >
+              <h3>
+                <button
+                  type="button"
+                  class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
+                  aria-expanded="false"
+                  aria-controls="faq-answer-8"
+                  data-index="8"
+                >
+                  <span class="text-base sm:text-lg"
+                    >What happens when my free trial ends?</span
+                  >
+                  <span
+                    class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0"
+                    >↓</span
+                  >
+                </button>
+              </h3>
+              <div
+                id="faq-answer-8"
+                class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4"
+              >
+                Explain the real subscription, billing, cancellation, and
+                account-access policies after they have been verified. Do not
+                imply that a paid subscription automatically begins, that a card
+                is required, or that cancellation is available in a specific way
+                unless those details are confirmed.
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="space-y-4">
-          <!-- FAQ Item 1 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-0"
-                data-index="0"
-              >
-                <span class="text-base sm:text-lg">What is SperX?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-0" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              SperX is a web-based digital loyalty app that lets businesses create and manage loyalty programs. Customers can join a program by scanning its QR code.
-            </div>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-1"
-                data-index="1"
-              >
-                <span class="text-base sm:text-lg">How do customers join my loyalty program?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-1" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              You create a loyalty program in SperX and make its QR code available to customers. They scan the code to access your program through SperX's web-based experience.
-            </div>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-2"
-                data-index="2"
-              >
-                <span class="text-base sm:text-lg">Do customers need to download an app?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-2" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              SperX is web-based, so customers can access the loyalty experience through a browser. Do not promise that no additional steps or account requirements apply unless this has been verified for the actual customer enrollment flow.
-            </div>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-3"
-                data-index="3"
-              >
-                <span class="text-base sm:text-lg">What types of loyalty programs can I create?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-3" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              SperX supports digital loyalty programs using stamps or points, along with reward and redemption management. The specific options depend on the features available in your merchant account.
-            </div>
-          </div>
-
-          <!-- FAQ Item 5 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-4"
-                data-index="4"
-              >
-                <span class="text-base sm:text-lg">Can I track rewards and customer activity?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-4" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              Yes. SperX includes rewards and redemption tracking, as well as customer activity and loyalty analytics. The information available depends on the reporting tools provided by the product.
-            </div>
-          </div>
-
-          <!-- FAQ Item 6 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-5"
-                data-index="5"
-              >
-                <span class="text-base sm:text-lg">Is SperX free?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-5" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              SperX offers a free trial followed by a subscription. Review the current plan details and applicable terms during signup before choosing a plan.
-            </div>
-          </div>
-
-          <!-- FAQ Item 7 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-6"
-                data-index="6"
-              >
-                <span class="text-base sm:text-lg">How long is the free trial?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-6" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              Display the actual confirmed trial duration and applicable conditions. If the duration has not been confirmed, do not invent a number of days or publish a misleading answer.
-            </div>
-          </div>
-
-          <!-- FAQ Item 8 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-7"
-                data-index="7"
-              >
-                <span class="text-base sm:text-lg">Do I need technical skills to use SperX?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-7" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              SperX is a web-based loyalty experience where merchants create and manage their programs. Explore the product during your trial to see how it fits your business workflow.
-            </div>
-          </div>
-
-          <!-- FAQ Item 9 -->
-          <div class="bg-[var(--card-bg)] rounded-2xl border border-[var(--border-color)] overflow-hidden transition-all">
-            <h3>
-              <button
-                type="button"
-                class="faq-toggle w-full px-6 py-5 text-left font-bold flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-inset"
-                aria-expanded="false"
-                aria-controls="faq-answer-8"
-                data-index="8"
-              >
-                <span class="text-base sm:text-lg">What happens when my free trial ends?</span>
-                <span class="faq-arrow w-8 h-8 rounded-full bg-[var(--background)] border border-[var(--border-color)] flex items-center justify-center transition-transform duration-200 shrink-0">↓</span>
-              </button>
-            </h3>
-            <div id="faq-answer-8" class="hidden px-6 pb-6 pt-0 opacity-80 text-sm sm:text-base leading-relaxed border-t border-[var(--border-color)]/50 pt-4">
-              Explain the real subscription, billing, cancellation, and account-access policies after they have been verified. Do not imply that a paid subscription automatically begins, that a card is required, or that cancellation is available in a specific way unless those details are confirmed.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
+      <!-- ==========================================
         J. FINAL CTA
         ========================================== -->
-    <section class="py-24 bg-[var(--card-bg)] border-t border-[var(--border-color)]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-xs font-bold tracking-wider uppercase text-black">
-          READY TO MAKE LOYALTY DIGITAL?
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
-          Give customers a reason to come back.
-        </h2>
-        <p class="text-base sm:text-lg opacity-80 max-w-2xl mx-auto leading-relaxed">
-          Create your loyalty program with SperX and make it easy for customers to join, earn stamps or points, and engage with your rewards.
-        </p>
-        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href="/signup" 
-            class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 text-base font-bold shadow-lg transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+      <section
+        class="py-24 bg-[var(--card-bg)] border-t border-[var(--border-color)]"
+      >
+        <div
+          class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6"
+        >
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-xs font-bold tracking-wider uppercase text-black"
           >
-            Create an Account
-          </a>
+            READY TO MAKE LOYALTY DIGITAL?
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+            Give customers a reason to come back.
+          </h2>
+          <p
+            class="text-base sm:text-lg opacity-80 max-w-2xl mx-auto leading-relaxed"
+          >
+            Create your loyalty program with SperX and make it easy for
+            customers to join, earn stamps or points, and engage with your
+            rewards.
+          </p>
+          <div
+            class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="/signup"
+              class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 text-base font-bold shadow-lg transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)]"
+            >
+              Create an Account
+            </a>
+          </div>
+          <p class="text-xs font-medium opacity-60">Start your free trial.</p>
         </div>
-        <p class="text-xs font-medium opacity-60">
-          Start your free trial.
-        </p>
-      </div>
-    </section>
+      </section>
+    </main>
 
-  </main>
-
-  <!-- ==========================================
+    <!-- ==========================================
       K. FOOTER
       ========================================== -->
-  <footer class="bg-[var(--primary-darkest)] text-white pt-16 pb-12 border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
-        
-        <div class="md:col-span-5 space-y-4">
-          <div class="flex items-center gap-2">
-            <div class="w-9 h-9 rounded-xl bg-[var(--secondary)] text-black font-black flex items-center justify-center text-sm">
-              SX
+    <footer
+      class="bg-[var(--primary-darkest)] text-white pt-16 pb-12 border-t border-white/10"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10"
+        >
+          <div class="md:col-span-5 space-y-4">
+            <div class="flex items-center gap-2">
+              <div
+                class="w-9 h-9 rounded-xl bg-[var(--secondary)] text-black font-black flex items-center justify-center text-sm"
+              >
+                SX
+              </div>
+              <span class="text-2xl font-black tracking-tight text-white"
+                >SperX</span
+              >
             </div>
-            <span class="text-2xl font-black tracking-tight text-white">SperX</span>
+            <p class="text-sm text-white/70 max-w-sm leading-relaxed">
+              Digital loyalty for businesses that want to turn first-time
+              visitors into regulars.
+            </p>
           </div>
-          <p class="text-sm text-white/70 max-w-sm leading-relaxed">
-            Digital loyalty for businesses that want to turn first-time visitors into regulars.
-          </p>
+
+          <div class="md:col-span-3 space-y-4">
+            <h4
+              class="text-xs font-bold tracking-wider uppercase text-white/50"
+            >
+              Product
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >How It Works</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/signup"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >Create an Account</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/login"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >Log In</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-2 space-y-4">
+            <h4
+              class="text-xs font-bold tracking-wider uppercase text-white/50"
+            >
+              Company
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <span
+                  class="text-sm text-white/40 cursor-not-allowed"
+                  title="Pending real page existence"
+                  >About SperX</span
+                >
+              </li>
+              <li>
+                <a
+                  href="/support"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-2 space-y-4">
+            <h4
+              class="text-xs font-bold tracking-wider uppercase text-white/50"
+            >
+              Legal
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="/terms"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >Terms and Conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/privacy"
+                  class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="md:col-span-3 space-y-4">
-          <h4 class="text-xs font-bold tracking-wider uppercase text-white/50">Product</h4>
-          <ul class="space-y-3">
-            <li><a href="#how-it-works" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">How It Works</a></li>
-            <li><a href="#features" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">Features</a></li>
-            <li><a href="/signup" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">Create an Account</a></li>
-            <li><a href="/login" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">Log In</a></li>
-          </ul>
+        <div
+          class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4"
+        >
+          <p>© 2026 SperX. All rights reserved.</p>
+          <div class="flex items-center gap-6">
+            <a href="/privacy" class="hover:text-white transition-colors"
+              >Privacy</a
+            >
+            <a href="/terms" class="hover:text-white transition-colors"
+              >Terms</a
+            >
+          </div>
         </div>
-
-        <div class="md:col-span-2 space-y-4">
-          <h4 class="text-xs font-bold tracking-wider uppercase text-white/50">Company</h4>
-          <ul class="space-y-3">
-            <li><span class="text-sm text-white/40 cursor-not-allowed" title="Pending real page existence">About SperX</span></li>
-            <li><a href="/support" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="md:col-span-2 space-y-4">
-          <h4 class="text-xs font-bold tracking-wider uppercase text-white/50">Legal</h4>
-          <ul class="space-y-3">
-            <li><a href="/terms" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">Terms and Conditions</a></li>
-            <li><a href="/privacy" class="text-sm text-white/80 hover:text-[var(--secondary)] transition-colors">Privacy Policy</a></li>
-          </ul>
-        </div>
-
       </div>
+    </footer>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 gap-4">
-        <p>© 2026 SperX. All rights reserved.</p>
-        <div class="flex items-center gap-6">
-          <a href="/privacy" class="hover:text-white transition-colors">Privacy</a>
-          <a href="/terms" class="hover:text-white transition-colors">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ==========================================
+    <!-- ==========================================
       VANILLA JAVASCRIPT INTERACTIONS & THEME TOGGLE
       ========================================== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Theme Toggle Logic
-      const themeToggleBtn = document.getElementById('theme-toggle');
-      const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. Theme Toggle Logic
+        const themeToggleBtn = document.getElementById("theme-toggle");
+        const themeToggleMobileBtn = document.getElementById(
+          "theme-toggle-mobile",
+        );
 
-      const applyTheme = (isDark) => {
-        if (isDark) {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-        }
-      };
-
-      // Check initial theme preference
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        applyTheme(true);
-      } else {
-        applyTheme(false);
-      }
-
-      const toggleThemeHandler = () => {
-        const isCurrentlyDark = document.documentElement.classList.contains('dark');
-        applyTheme(!isCurrentlyDark);
-      };
-
-      if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleThemeHandler);
-      if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleThemeHandler);
-
-      // 2. Mobile Menu Toggle
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-      mobileMenuBtn.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        if (isHidden) {
-          mobileMenu.classList.remove('hidden');
-          mobileMenuBtn.setAttribute('aria-expanded', 'true');
-        } else {
-          mobileMenu.classList.add('hidden');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-          mobileMenu.classList.add('hidden');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // 3. FAQ Accordion Toggle (Vanilla JS)
-      const faqToggles = document.querySelectorAll('.faq-toggle');
-      
-      faqToggles.forEach(button => {
-        button.addEventListener('click', () => {
-          const index = button.getAttribute('data-index');
-          const answer = document.getElementById(`faq-answer-${index}`);
-          const arrow = button.querySelector('.faq-arrow');
-          const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-          if (isExpanded) {
-            answer.classList.add('hidden');
-            button.setAttribute('aria-expanded', 'false');
-            arrow.classList.remove('rotate-180');
+        const applyTheme = (isDark) => {
+          if (isDark) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
           } else {
-            answer.classList.remove('hidden');
-            button.setAttribute('aria-expanded', 'true');
-            arrow.classList.add('rotate-180');
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          }
+        };
+
+        // Check initial theme preference
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+          applyTheme(true);
+        } else {
+          applyTheme(false);
+        }
+
+        const toggleThemeHandler = () => {
+          const isCurrentlyDark =
+            document.documentElement.classList.contains("dark");
+          applyTheme(!isCurrentlyDark);
+        };
+
+        if (themeToggleBtn)
+          themeToggleBtn.addEventListener("click", toggleThemeHandler);
+        if (themeToggleMobileBtn)
+          themeToggleMobileBtn.addEventListener("click", toggleThemeHandler);
+
+        // 2. Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+        mobileMenuBtn.addEventListener("click", () => {
+          const isHidden = mobileMenu.classList.contains("hidden");
+          if (isHidden) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenuBtn.setAttribute("aria-expanded", "true");
+          } else {
+            mobileMenu.classList.add("hidden");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
           }
         });
+
+        mobileNavLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.add("hidden");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // 3. FAQ Accordion Toggle (Vanilla JS)
+        const faqToggles = document.querySelectorAll(".faq-toggle");
+
+        faqToggles.forEach((button) => {
+          button.addEventListener("click", () => {
+            const index = button.getAttribute("data-index");
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const arrow = button.querySelector(".faq-arrow");
+            const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+            if (isExpanded) {
+              answer.classList.add("hidden");
+              button.setAttribute("aria-expanded", "false");
+              arrow.classList.remove("rotate-180");
+            } else {
+              answer.classList.remove("hidden");
+              button.setAttribute("aria-expanded", "true");
+              arrow.classList.add("rotate-180");
+            }
+          });
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
