@@ -904,14 +904,19 @@
       </section>
 
       <!-- ==========================================
-        E. PRODUCT FEATURES
-        ========================================== -->
+      E. PRODUCT FEATURES
+      ========================================== -->
       <section
         id="features"
         class="py-20 bg-[var(--card-bg)] border-t border-[var(--border-color)]"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-xs font-bold tracking-wider uppercase text-[#171717] dark:text-white"
+            >
+              What's In it For Me?
+            </div>
             <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
               Everything you need to run digital loyalty.
             </h2>
@@ -921,222 +926,337 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature Cards -->
+          <div
+            id="feature-cards"
+            class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 md:snap-none lg:grid-cols-3"
+            role="region"
+            aria-label="Product features"
+            aria-roledescription="carousel"
+          >
+            <!-- Feature 1: Manage your loyalty programs -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="1 of 6"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold shadow-sm"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h.01M16 16h1m-1-4h2m-4-8h2m-6 0H6v2m0 4v2m0 4h2"
-                    />
-                  </svg>
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Create and manage your loyalty programs
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">QR code enrollment</h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Make joining your loyalty program straightforward. Customers
-                  scan your program's QR code to get started.
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Set up and manage your digital loyalty programs based on
+                  what's best for your business - all this through SperX's
+                  web-based merchant experience.
                 </p>
               </div>
               <div
-                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
+              >
+                Centralized control
+              </div>
+            </div>
+
+            <!-- Feature 2: Seamless membership -->
+            <div
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="2 of 6"
+            >
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold shadow-sm"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h.01M16 16h1m-1-4h2m-4-8h2m-6 0H6v2m0 4v2m0 4h2"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Seamless membership
+                  </h3>
+                </div>
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Make joining your loyalty program straightforward. Customers
+                  scan your program's QR code to get started
+                  <span class="font-bold">without downloading any app.</span>
+                </p>
+              </div>
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
                 Frictionless onboarding
               </div>
             </div>
 
+            <!-- Feature 3: Digital loyalty card -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="3 of 6"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold shadow-sm"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                    />
-                  </svg>
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Digital loyalty cards
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Digital loyalty cards</h3>
-                <p class="opacity-80 text-sm leading-relaxed">
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
                   Give customers a digital alternative to paper loyalty cards,
                   accessible through SperX's web-based experience.
+                  <span class="font-bold">No more lost or damaged cards.</span>
                 </p>
               </div>
               <div
-                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
                 Web-based convenience
               </div>
             </div>
 
+            <!-- Feature 4: Customer activity and loyalty analytics -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="4 of 6"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold shadow-sm"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                    />
-                  </svg>
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Customer activity and loyalty analytics
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Digital stamps or points</h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Structure your loyalty program around the supported stamp or
-                  points options that best fit your business.
-                </p>
-              </div>
-              <div
-                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
-              >
-                Flexible structures
-              </div>
-            </div>
-
-            <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
-            >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
                 >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-xl font-bold mb-3">
-                  Rewards and redemption tracking
-                </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Manage your loyalty rewards and keep track of redemptions
-                  using the available SperX tools.
-                </p>
-              </div>
-              <div
-                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
-              >
-                Streamlined fulfillment
-              </div>
-            </div>
-
-            <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
-            >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-xl font-bold mb-3">
-                  Customer activity and loyalty analytics
-                </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
                   Review the customer activity and loyalty insights available in
                   your merchant dashboard to better understand your program.
                 </p>
               </div>
               <div
-                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
                 Actionable insights
               </div>
             </div>
 
+            <!-- Feature 5: Rewards and redemption tracking -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="5 of 6"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] flex items-center justify-center font-bold mb-6"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold shadow-sm"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Rewards and redemption tracking
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">
-                  Create and manage your programs
-                </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Set up and manage your digital loyalty programs through
-                  SperX's web-based merchant experience.
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Manage your loyalty rewards and keep track of redemptions
+                  using the available SperX tools.
                 </p>
               </div>
               <div
-                class="pt-6 mt-6 border-t border-[var(--border-color)] text-xs font-semibold opacity-60"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
-                Centralized control
+                Streamlined fulfillment
               </div>
             </div>
+
+            <!-- Feature 6: Get Paid Before the Next Visit -->
+            <div
+              class="w-full shrink-0 snap-center bg-[var(--primary)] rounded-2xl p-8 border-2 border-[var(--primary)] dark:border-[var(--secondary)] ring-2 ring-[var(--primary-foreground)]/20 flex flex-col justify-between shadow-md transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="6 of 6"
+            >
+              <a
+                href="#pilot-program"
+                class="mb-4 inline-flex w-fit items-center rounded-full bg-[var(--secondary)] px-3 py-1 text-xs font-bold tracking-wider uppercase text-[var(--secondary-foreground)]"
+              >
+                Wallet program details
+              </a>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary-lightest)] border border-[var(--primary-foreground)]/30 dark:border-[var(--secondary)] text-[var(--primary)] dark:text-[var(--secondary)] flex items-center justify-center font-bold shadow-sm"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 7a2 2 0 012-2h14a2 2 0 012 2v2h-5a3 3 0 000 6h5v2a2 2 0 01-2 2H5a2 2 0 01-2-2V7zm13 3h6v4h-6a2 2 0 010-4zm1 2h.01"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--primary-foreground)]">
+                    Get Paid Before the Next Visit
+                  </h3>
+                </div>
+                <p
+                  class="text-sm opacity-90 leading-relaxed text-[var(--primary-foreground)]"
+                >
+                  Let customers top up their balance in advance, giving your
+                  business upfront funds while encouraging them to return and
+                  spend.
+                </p>
+              </div>
+              <div
+                class="mt-8 pt-4 border-t border-[var(--primary-foreground)]/30 text-xs font-semibold text-[var(--secondary)] flex items-center gap-1.5"
+              >
+                Secure Repeat Business in Advance
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-4 flex justify-center gap-2 md:hidden"
+            role="group"
+            aria-label="Choose a product feature"
+          >
+            <button
+              type="button"
+              class="feature-card-indicator h-2 w-6 rounded-full bg-[var(--primary)] transition-all"
+              aria-label="Go to feature 1"
+              aria-controls="feature-cards"
+              aria-current="true"
+            ></button>
+            <button
+              type="button"
+              class="feature-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to feature 2"
+              aria-controls="feature-cards"
+            ></button>
+            <button
+              type="button"
+              class="feature-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to feature 3"
+              aria-controls="feature-cards"
+            ></button>
+            <button
+              type="button"
+              class="feature-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to feature 4"
+              aria-controls="feature-cards"
+            ></button>
+            <button
+              type="button"
+              class="feature-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to feature 5"
+              aria-controls="feature-cards"
+            ></button>
+            <button
+              type="button"
+              class="feature-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to feature 6"
+              aria-controls="feature-cards"
+            ></button>
           </div>
 
           <div class="mt-12 text-center">
@@ -1254,9 +1374,10 @@
       </section>
 
       <!-- ==========================================
-        G. PILOT MERCHANT TRUST SECTION
+        G. WALLET PROGRAM SECTION
         ========================================== -->
       <section
+        id="pilot-program"
         class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)]"
       >
         <div
@@ -1265,7 +1386,7 @@
           <div
             class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-xs font-bold tracking-wider uppercase"
           >
-            PILOT PROGRAM
+            WALLET PROGRAM
           </div>
           <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
             Built around real business needs.
@@ -1833,33 +1954,29 @@
         if (themeToggleMobileBtn)
           themeToggleMobileBtn.addEventListener("click", toggleThemeHandler);
 
-        // 2. Mobile Problem Cards Carousel
-        const problemCards = document.getElementById("problem-cards");
-        const problemCardIndicators = document.querySelectorAll(
-          ".problem-card-indicator",
-        );
+        // 2. Mobile Card Carousels
+        const initializeMobileCarousel = (containerId, indicatorSelector) => {
+          const carousel = document.getElementById(containerId);
+          const indicators = document.querySelectorAll(indicatorSelector);
+          if (!carousel || !indicators.length) return;
 
-        if (problemCards && problemCardIndicators.length) {
-          const slides = problemCards.querySelectorAll(
+          const slides = carousel.querySelectorAll(
             '[aria-roledescription="slide"]',
           );
-          let activeProblemCard = 0;
+          let activeSlide = 0;
           const mobileViewport = window.matchMedia("(max-width: 767px)");
           const reducedMotion = window.matchMedia(
             "(prefers-reduced-motion: reduce)",
           );
 
-          const setActiveProblemCard = (index) => {
-            activeProblemCard = index;
-            problemCardIndicators.forEach((indicator, indicatorIndex) => {
+          const setActiveSlide = (index) => {
+            activeSlide = index;
+            indicators.forEach((indicator, indicatorIndex) => {
               const isActive = indicatorIndex === index;
               indicator.classList.toggle("w-6", isActive);
               indicator.classList.toggle("w-2", !isActive);
               indicator.classList.toggle("bg-[var(--primary)]", isActive);
-              indicator.classList.toggle(
-                "bg-[var(--border-color)]",
-                !isActive,
-              );
+              indicator.classList.toggle("bg-[var(--border-color)]", !isActive);
               if (isActive) {
                 indicator.setAttribute("aria-current", "true");
               } else {
@@ -1868,39 +1985,38 @@
             });
           };
 
-          const scrollToProblemCard = (index) => {
+          const scrollToSlide = (index) => {
             const slide = slides[index];
             if (!slide) return;
             const gap =
-              Number.parseFloat(
-                window.getComputedStyle(problemCards).columnGap,
-              ) || 0;
-            problemCards.scrollTo({
+              Number.parseFloat(window.getComputedStyle(carousel).columnGap) ||
+              0;
+            carousel.scrollTo({
               left: index * (slide.getBoundingClientRect().width + gap),
               behavior: "smooth",
             });
           };
 
-          problemCardIndicators.forEach((indicator, index) => {
+          indicators.forEach((indicator, index) => {
             indicator.addEventListener("click", () => {
-              scrollToProblemCard(index);
+              scrollToSlide(index);
             });
           });
 
-          problemCards.addEventListener(
+          carousel.addEventListener(
             "scroll",
             () => {
               const firstSlide = slides[0];
               if (!firstSlide) return;
               const gap =
                 Number.parseFloat(
-                  window.getComputedStyle(problemCards).columnGap,
+                  window.getComputedStyle(carousel).columnGap,
                 ) || 0;
               const stride = firstSlide.getBoundingClientRect().width + gap;
-              setActiveProblemCard(
+              setActiveSlide(
                 Math.min(
                   slides.length - 1,
-                  Math.round(problemCards.scrollLeft / stride),
+                  Math.round(carousel.scrollLeft / stride),
                 ),
               );
             },
@@ -1916,9 +2032,12 @@
               return;
             }
 
-            scrollToProblemCard((activeProblemCard + 1) % slides.length);
+            scrollToSlide((activeSlide + 1) % slides.length);
           }, 5500);
-        }
+        };
+
+        initializeMobileCarousel("problem-cards", ".problem-card-indicator");
+        initializeMobileCarousel("feature-cards", ".feature-card-indicator");
 
         // 3. Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById("mobile-menu-btn");
