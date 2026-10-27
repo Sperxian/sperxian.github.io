@@ -675,92 +675,226 @@
       </section>
 
       <!-- ==========================================
-        D. HOW SPERX WORKS
-        ========================================== -->
-      <section id="how-it-works" class="py-20 bg-[var(--background)]">
+      D. HOW SPERX WORKS SECTION
+      ========================================== -->
+      <section
+        id="how-it-works"
+        class="py-20 bg-[var(--background)] transition-colors duration-300"
+      >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
           <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-              Your loyalty program. Three simple steps.
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-xs font-bold tracking-wider uppercase text-[#171717] dark:text-white"
+            >
+              ZERO APP DOWNLOADS REQUIRED
+            </div>
+            <h2
+              class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[var(--foreground)]"
+            >
+              From first scan to repeat customer in 3 simple steps.
             </h2>
-            <p class="text-base sm:text-lg opacity-80">
-              Get your digital loyalty program ready and make it easy for
-              customers to join.
+            <p
+              class="text-base sm:text-lg opacity-80 leading-relaxed text-[var(--foreground)]"
+            >
+              Experience seamless digital loyalty that lives right in your
+              customer's mobile browser. No app store downloads, no friction.
             </p>
           </div>
 
+          <!-- Steps Grid: Horizontal on desktop, vertical stack on mobile -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <!-- Step 1: QR Code Scan -->
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative"
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between relative shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div
-                class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm"
-              >
-                1
+              <div>
+                <!-- Numbered Indicator -->
+                <div
+                  class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-[#171717] dark:text-white font-black text-sm flex items-center justify-center shadow-md"
+                >
+                  1
+                </div>
+
+                <h3 class="text-xl font-bold text-[var(--foreground)] mb-3">
+                  Customers scan your QR code
+                </h3>
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Place your unique Sperx QR code at your counter. Customers
+                  scan it with their phones to access your digital loyalty
+                  program.
+                </p>
+
+                <!-- Visual / Mockup representation of QR Scan -->
+                <div
+                  class="mt-4 mb-6 bg-[var(--background)] rounded-xl p-4 border border-[var(--border-color)] flex items-center justify-center gap-4"
+                >
+                  <div
+                    class="w-16 h-16 bg-[var(--primary)] rounded-lg p-2 flex items-center justify-center shrink-0 shadow-inner"
+                  >
+                    <div
+                      class="w-full h-full bg-white dark:bg-[#14042e] rounded flex items-center justify-center text-[var(--primary)] dark:text-[#8b62db] font-black text-xs tracking-tighter"
+                    >
+                      QR
+                    </div>
+                  </div>
+                  <div class="text-left space-y-1">
+                    <span
+                      class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[var(--secondary-lightest)] text-[#171717] dark:text-white uppercase"
+                      >Instant Access</span
+                    >
+                    <p
+                      class="text-xs font-semibold opacity-90 text-[var(--foreground)]"
+                    >
+                      Point phone camera at counter display
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 class="text-xl font-bold mt-2 mb-3">
-                Create your loyalty program.
-              </h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Set up a digital loyalty experience that fits your business.
-                Choose the supported stamps or points approach and define your
-                rewards according to the options available in SperX.
-              </p>
+
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
+              >
+                No app store required
+              </div>
             </div>
 
+            <!-- Step 2: Browser Join & Collection -->
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative"
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between relative shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div
-                class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm"
-              >
-                2
+              <div>
+                <!-- Numbered Indicator -->
+                <div
+                  class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-[#171717] dark:text-white font-black text-sm flex items-center justify-center shadow-md"
+                >
+                  2
+                </div>
+
+                <h3 class="text-xl font-bold text-[var(--foreground)] mb-3">
+                  They join and collect rewards
+                </h3>
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Customers join through their browser and start participating
+                  in your loyalty program. They collect stamps or points as they
+                  make qualifying purchases.
+                </p>
+
+                <!-- Visual / Mockup representation of Browser Web App -->
+                <div
+                  class="mt-4 mb-6 bg-[var(--background)] rounded-xl p-4 border border-[var(--border-color)] space-y-2"
+                >
+                  <div
+                    class="flex items-center justify-between text-[10px] opacity-60 border-b border-[var(--border-color)] pb-2 font-mono text-[var(--foreground)]"
+                  >
+                    <span>sperx.app/store</span>
+                    <span class="text-[var(--secondary-dark)] font-bold"
+                      >Browser Active</span
+                    >
+                  </div>
+                  <div class="flex justify-between items-center pt-1">
+                    <span class="text-xs font-bold text-[var(--foreground)]">
+                      Stamp Card Progress
+                    </span>
+                    <span
+                      class="text-xs font-extrabold text-[var(--secondary-dark)]"
+                    >
+                      3 / 6 Stamps
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 class="text-xl font-bold mt-2 mb-3">
-                Let customers scan to join.
-              </h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Display your program's QR code where customers can see it. They
-                scan the code to access your digital loyalty program through
-                SperX's web-based experience.
-              </p>
+
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
+              >
+                Direct mobile web experience
+              </div>
             </div>
 
+            <!-- Step 3: Return & Claim -->
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] relative"
+              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between relative shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div
-                class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-black font-black text-sm flex items-center justify-center shadow-sm"
-              >
-                3
+              <div>
+                <!-- Numbered Indicator -->
+                <div
+                  class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-[var(--secondary)] border border-[var(--primary)] text-[#171717] dark:text-white font-black text-sm flex items-center justify-center shadow-md"
+                >
+                  3
+                </div>
+
+                <h3 class="text-xl font-bold text-[var(--foreground)] mb-3">
+                  They return to claim rewards
+                </h3>
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Customers work toward rewards they actually want, giving them
+                  another reason to visit your business.
+                </p>
+
+                <!-- Visual / Mockup representation of Reward Redemption -->
+                <div
+                  class="mt-4 mb-6 bg-[var(--background)] rounded-xl p-4 border border-[var(--border-color)] flex items-center gap-3"
+                >
+                  <div
+                    class="w-10 h-10 rounded-lg bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] flex items-center justify-center text-[#171717] dark:text-white font-bold text-base shrink-0"
+                  >
+                    🎁
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-[var(--foreground)]">
+                      Reward Unlocked!
+                    </p>
+                    <p class="text-[11px] opacity-70 text-[var(--foreground)]">
+                      Redeem for your next visit
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 class="text-xl font-bold mt-2 mb-3">
-                Manage loyalty and rewards.
-              </h3>
-              <p class="opacity-80 text-sm leading-relaxed">
-                Use SperX's supported program tools to manage stamps or points,
-                track rewards and redemptions, and review available customer
-                activity and loyalty analytics.
-              </p>
+
+              <div
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
+              >
+                <svg
+                  class="w-4 h-4 shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                  />
+                </svg>
+                Guaranteed repeat visits
+              </div>
             </div>
           </div>
 
+          <!-- Quick Action / Trust Sub-banner -->
           <div
             class="mt-12 text-center bg-[var(--primary)] text-white rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl"
           >
             <div class="text-left space-y-1">
               <h4 class="text-xl font-bold">
-                Ready to set up your loyalty program?
+                Ready to see your customers return more often?
               </h4>
-              <p class="text-sm opacity-80">
-                Start your free trial and explore how digital loyalty can fit
-                into your business.
+              <p class="text-sm text-white/80">
+                Get your QR code generated in minutes and start your free trial.
               </p>
             </div>
             <a
               href="https://merchant.app.sperx.app"
               target="_blank"
-              class="shrink-0 bg-[var(--secondary)] text-black hover:opacity-90 px-6 py-3.5 rounded-xl font-bold text-sm shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]"
+              class="shrink-0 bg-[var(--secondary)] text-[#171717] dark:text-white hover:opacity-90 px-6 py-3.5 rounded-xl font-bold text-sm shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary)]"
             >
               Create Your First Loyalty Program
             </a>
