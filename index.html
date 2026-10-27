@@ -76,6 +76,62 @@
           background-color 0.3s ease,
           color 0.3s ease;
       }
+
+      .who-business-viewport {
+        overflow-x: auto;
+        scrollbar-width: none;
+        cursor: grab;
+      }
+
+      .who-business-viewport::-webkit-scrollbar {
+        display: none;
+      }
+
+      .who-business-viewport:active {
+        cursor: grabbing;
+      }
+
+      .who-business-track {
+        display: flex;
+        width: max-content;
+      }
+
+      .who-business-group {
+        display: flex;
+        flex: 0 0 auto;
+        gap: 2rem;
+        padding-right: 2rem;
+      }
+
+      .who-business-group > div {
+        flex: 0 0 min(85vw, 360px);
+      }
+
+      .who-business-indicator {
+        height: 0.5rem;
+        width: 0.5rem;
+        border-radius: 9999px;
+        background: var(--border-color);
+        transition:
+          width 0.2s ease,
+          background-color 0.2s ease;
+      }
+
+      .who-business-indicator[aria-current="true"] {
+        width: 1.5rem;
+        background: var(--primary);
+      }
+
+      .who-business-indicator:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .who-business-group[aria-hidden="true"] {
+          display: none;
+        }
+      }
     </style>
 
     <script>
@@ -1292,7 +1348,16 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            id="who-business-viewport"
+            class="who-business-viewport"
+            role="region"
+            aria-label="Businesses served by SperX"
+            aria-roledescription="carousel"
+            tabindex="0"
+          >
+            <div id="who-business-track" class="who-business-track">
+              <div class="who-business-group">
             <div
               class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
             >
@@ -1448,6 +1513,61 @@
                 </p>
               </div>
             </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="who-business-indicators"
+            class="mt-4 flex justify-center gap-2"
+            role="group"
+            aria-label="Choose a business type"
+          >
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Cafes and coffee shops"
+              aria-current="true"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Restaurants and food businesses"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Hair and salon services"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Spa and wellness"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Pet grooming"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Laundry"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Car wash"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Personal classes"
+            ></button>
+            <button
+              type="button"
+              class="who-business-indicator"
+              aria-label="Go to Other retail and service businesses"
+            ></button>
           </div>
 
           <div class="mt-12 text-center">
@@ -2042,6 +2162,177 @@
           themeToggleBtn.addEventListener("click", toggleThemeHandler);
         if (themeToggleMobileBtn)
           themeToggleMobileBtn.addEventListener("click", toggleThemeHandler);
+
+        // Continuous, draggable business carousel with direct slide indicators.
+        const businessViewport = document.getElementById(
+          "who-business-viewport",
+        );
+        const businessTrack = document.getElementById("who-business-track");
+        const businessIndicators = document.querySelectorAll(
+          ".who-business-indicator",
+        );
+        const businessCardGroup = businessTrack?.querySelector(
+          ".who-business-group",
+        );
+
+        if (
+          businessViewport &&
+          businessTrack &&
+          businessCardGroup &&
+          businessIndicators.length
+        ) {
+          const businessCards = [...businessCardGroup.children];
+          const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          );
+          const duplicateGroup = businessCardGroup.cloneNode(true);
+          duplicateGroup.setAttribute("aria-hidden", "true");
+          duplicateGroup.inert = true;
+          businessTrack.append(duplicateGroup);
+
+          let lastFrameTime = 0;
+          let pauseUntil = 0;
+          let isDragging = false;
+          let isMouseDragging = false;
+          let dragStartX = 0;
+          let dragStartScroll = 0;
+
+          const groupWidth = () =>
+            businessCardGroup.getBoundingClientRect().width;
+
+          const updateBusinessIndicator = () => {
+            const width = groupWidth();
+            if (!width) return;
+
+            const groupCenter =
+              ((businessViewport.scrollLeft +
+                businessViewport.clientWidth / 2) %
+                width +
+                width) %
+              width;
+            const groupRect = businessCardGroup.getBoundingClientRect();
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+
+            businessCards.forEach((card, index) => {
+              const rect = card.getBoundingClientRect();
+              const cardCenter =
+                rect.left - groupRect.left + rect.width / 2;
+              const directDistance = Math.abs(cardCenter - groupCenter);
+              const distance = Math.min(
+                directDistance,
+                width - directDistance,
+              );
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+              }
+            });
+
+            businessIndicators.forEach((indicator, index) => {
+              if (index === closestIndex) {
+                indicator.setAttribute("aria-current", "true");
+              } else {
+                indicator.removeAttribute("aria-current");
+              }
+            });
+          };
+
+          businessIndicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => {
+              const card = businessCards[index];
+              if (!card) return;
+
+              const width = groupWidth();
+              const groupRect = businessCardGroup.getBoundingClientRect();
+              const rect = card.getBoundingClientRect();
+              const cardCenter = rect.left - groupRect.left + rect.width / 2;
+              const viewportCenter =
+                businessViewport.scrollLeft +
+                businessViewport.clientWidth / 2;
+              const copyIndex = Math.max(
+                0,
+                Math.min(
+                  1,
+                  Math.round((viewportCenter - cardCenter) / width),
+                ),
+              );
+              const target =
+                cardCenter + copyIndex * width -
+                businessViewport.clientWidth / 2;
+
+              pauseUntil = Date.now() + 3000;
+              businessViewport.scrollTo({
+                left: Math.max(0, target),
+                behavior: reducedMotion.matches ? "auto" : "smooth",
+              });
+            });
+          });
+
+          businessViewport.addEventListener(
+            "scroll",
+            updateBusinessIndicator,
+            { passive: true },
+          );
+
+          businessViewport.addEventListener("pointerdown", (event) => {
+            pauseUntil = Date.now() + 3000;
+            if (event.pointerType === "mouse" && event.button !== 0) return;
+
+            isDragging = true;
+            if (event.pointerType !== "mouse") return;
+
+            isMouseDragging = true;
+            dragStartX = event.clientX;
+            dragStartScroll = businessViewport.scrollLeft;
+            businessViewport.setPointerCapture(event.pointerId);
+            event.preventDefault();
+          });
+
+          businessViewport.addEventListener("pointermove", (event) => {
+            if (!isMouseDragging) return;
+            businessViewport.scrollLeft =
+              dragStartScroll - (event.clientX - dragStartX);
+            pauseUntil = Date.now() + 3000;
+          });
+
+          const stopBusinessDrag = () => {
+            isDragging = false;
+            isMouseDragging = false;
+            pauseUntil = Date.now() + 3000;
+          };
+          businessViewport.addEventListener("pointerup", stopBusinessDrag);
+          businessViewport.addEventListener("pointercancel", stopBusinessDrag);
+          businessViewport.addEventListener("wheel", () => {
+            pauseUntil = Date.now() + 3000;
+          });
+
+          const animateBusinessCarousel = (time) => {
+            if (!lastFrameTime) lastFrameTime = time;
+            const elapsed = Math.min(time - lastFrameTime, 100);
+            lastFrameTime = time;
+
+            const isPaused =
+              reducedMotion.matches ||
+              document.hidden ||
+              isDragging ||
+              businessViewport.matches(":hover") ||
+              businessViewport.matches(":focus-visible") ||
+              Date.now() < pauseUntil;
+
+            const width = groupWidth();
+            if (!isPaused && width) {
+              businessViewport.scrollLeft += (width * elapsed) / 80000;
+              if (businessViewport.scrollLeft >= width) {
+                businessViewport.scrollLeft -= width;
+              }
+            }
+
+            requestAnimationFrame(animateBusinessCarousel);
+          };
+
+          requestAnimationFrame(animateBusinessCarousel);
+        }
 
         // 2. Mobile Card Carousels
         const initializeMobileCarousel = (containerId, indicatorSelector) => {
