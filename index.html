@@ -108,8 +108,8 @@
     </a>
 
     <!-- ==========================================
-      A. HEADER SECTION
-      ========================================== -->
+    A. HEADER SECTION
+    ========================================== -->
     <header
       class="sticky top-0 z-40 bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border-color)] transition-colors"
     >
@@ -308,8 +308,8 @@
 
     <main id="main-content">
       <!-- ==========================================
-        B. HERO SECTION
-        ========================================== -->
+      B. HERO SECTION
+      ========================================== -->
       <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -460,94 +460,174 @@
       </section>
 
       <!-- ==========================================
-        C. PROBLEM AND SOLUTION
-        ========================================== -->
+      C. PROBLEM SECTION
+      ========================================== -->
       <section
-        class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)]"
+        class="py-20 bg-[var(--card-bg)] border-y border-[var(--border-color)] transition-colors duration-300"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-              A great first visit is just the beginning.
+          <!-- Section Header -->
+          <div class="max-w-4xl mx-auto text-center space-y-4 mb-16">
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-xs font-bold tracking-wider uppercase text-black dark:text-white"
+            >
+              THE HIDDEN GROWTH LEAK
+            </div>
+            <h2
+              class="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-[var(--foreground)]"
+            >
+              Getting customers is hard.
+              <div
+                class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[var(--foreground)]"
+              >
+                Getting them to come back is harder.
+              </div>
             </h2>
-            <p class="text-base sm:text-lg opacity-80 leading-relaxed">
-              Your customers already know what they love about your business.
-              The challenge is giving them another reason to return.<br
-                class="hidden sm:inline"
-              />
-              Loyalty shouldn't mean juggling paper stamp cards or making your
-              team manage a complicated system. SperX gives you a digital way to
-              build a loyalty program around the customers you want to see
-              again.
+            <p
+              class="text-base sm:text-lg opacity-80 leading-relaxed text-[var(--foreground)]"
+            >
+              Without a reason to return, customers forget about your business,
+              try a competitor, or simply never come back.
             </p>
           </div>
 
+          <!-- Problem Cards Grid -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: High Customer Acquisition Cost -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1"
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm"
-                >
-                  01
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-black text-xl shadow-sm"
+                  >
+                    <svg
+                      class="w-9 h-9 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M20 11H4"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M20 7H4"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21V4a1 1 0 0 1 1-1h4a1 1 0 0 1 0 12H7"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Acquiring new customers is expensive
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Encourage return visits</h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Give customers a loyalty experience that makes coming back
-                  feel rewarding.
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  It is significantly more expensive to attract and win a new
+                  customer than it is to retain an existing one who already
+                  trusts your business.
                 </p>
               </div>
               <div
-                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
-                Built for repeat engagement
+                Rising Marketing Costs
               </div>
             </div>
 
+            <!-- Card 2: Untapped Revenue Potential -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1"
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm"
-                >
-                  02
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-black text-xl shadow-sm"
+                  >
+                    <svg
+                      class="w-10 h-10 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    Untapped revenue in existing customers
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Go digital with loyalty</h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Replace the need to manage loyalty through paper cards with a
-                  digital program.
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  There is a huge untapped potential for additional sales
+                  sitting right inside your current customer base waiting for an
+                  incentive to return.
                 </p>
               </div>
               <div
-                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
-                Zero paper clutter
+                Unrealized Customer Lifetime Value
               </div>
             </div>
 
+            <!-- Card 3: The Risk of Inaction -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between transition-transform hover:-translate-y-1"
+              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1"
             >
-              <div>
-                <div
-                  class="w-12 h-12 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-bold text-xl mb-6 shadow-sm"
-                >
-                  03
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 shrink-0 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] flex items-center justify-center font-black text-xl shadow-sm"
+                  >
+                    <svg
+                      class="w-10 h-10 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-[var(--foreground)]">
+                    The friction of forgotten visits
+                  </h3>
                 </div>
-                <h3 class="text-xl font-bold mb-3">
-                  Keep your program organized
-                </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Manage your loyalty program, stamps or points, rewards, and
-                  redemptions through SperX.
+                <p
+                  class="text-sm opacity-80 leading-relaxed text-[var(--foreground)]"
+                >
+                  Without a compelling digital reason to return, happy
+                  first-timers easily slip away to local competitors or break
+                  their visiting habits.
                 </p>
               </div>
               <div
-                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)]"
+                class="mt-8 pt-4 border-t border-[var(--border-color)] text-xs font-semibold text-[var(--secondary-dark)] flex items-center gap-1.5"
               >
-                Unified merchant tools
+                Attrition to Competitors
               </div>
             </div>
           </div>
