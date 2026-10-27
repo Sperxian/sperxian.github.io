@@ -141,22 +141,22 @@
         >
           <a
             href="#how-it-works"
-            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            class="text-sm font-medium opacity-80 hover:opacity-30 dark:opacity-100 transition-opacity"
             >How It Works</a
           >
           <a
             href="#features"
-            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            class="text-sm font-medium opacity-80 hover:opacity-30 dark:opacity-100 transition-opacity"
             >Features</a
           >
           <a
             href="#who-its-for"
-            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            class="text-sm font-medium opacity-80 hover:opacity-30 dark:opacity-100 transition-opacity"
             >Who It's For</a
           >
           <a
             href="#faq"
-            class="text-sm font-medium opacity-80 hover:opacity-100 transition-opacity"
+            class="text-sm font-medium opacity-80 hover:opacity-30 dark:opacity-100 transition-opacity"
             >FAQ</a
           >
         </nav>
@@ -203,7 +203,7 @@
           <a
             href="https://merchant.app.sperx.app"
             target="_blank"
-            class="text-sm font-semibold opacity-90 hover:opacity-100 px-4 py-2 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--primary)] rounded-lg"
+            class="text-sm font-semibold opacity-90 hover:opacity-30 dark:opacity-100 px-4 py-2 transition-opacity focus:outline-none focus:ring-2 focus:ring-[var(--primary)] rounded-lg"
           >
             Log In
           </a>
@@ -1272,11 +1272,16 @@
       </section>
 
       <!-- ==========================================
-        F. WHO SPERX IS FOR
-        ========================================== -->
+      F. WHO SPERX IS FOR
+      ========================================== -->
       <section id="who-its-for" class="py-20 bg-[var(--background)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-xs font-bold tracking-wider uppercase text-[#171717] dark:text-white"
+            >
+              Loyalty Program for Every Business
+            </div>
             <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
               Whatever you serve, loyalty belongs in your business.
             </h2>
@@ -1287,36 +1292,36 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
             >
-              <div
-                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30"
+                aria-hidden="true"
+                >☕</span
               >
-                ☕
-              </div>
-              <div>
-                <h3 class="text-xl font-bold mb-2">Cafés and coffee shops</h3>
-                <p class="opacity-80 text-sm leading-relaxed">
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">Cafes and coffee shops</h3>
+                <p class="text-md leading-relaxed">
                   Give regulars another reason to stop by for their next coffee.
                 </p>
               </div>
             </div>
 
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
             >
-              <div
-                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >🍽️</span
               >
-                🍽️
-              </div>
-              <div>
+              <div class="relative z-10">
                 <h3 class="text-xl font-bold mb-2">
                   Restaurants and food businesses
                 </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
+                <p class="text-md leading-relaxed">
                   Build a loyalty experience that gives diners a reason to
                   return.
                 </p>
@@ -1324,38 +1329,122 @@
             </div>
 
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
             >
-              <div
-                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >✂️</span
               >
-                ✂️
-              </div>
-              <div>
+              <div class="relative z-10">
                 <h3 class="text-xl font-bold mb-2">
-                  Salons and service businesses
+                  Hair and salon services
                 </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Make loyalty part of the experience customers already enjoy.
+                <p class="text-md leading-relaxed">
+                  Reward repeat appointments and help clients keep coming back.
                 </p>
               </div>
             </div>
 
             <div
-              class="bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)] flex items-start gap-6"
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
             >
-              <div
-                class="w-14 h-14 rounded-2xl bg-[var(--secondary-lightest)] border border-[var(--secondary-lighter)] text-black flex items-center justify-center shrink-0 font-black text-lg"
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >🧖</span
               >
-                🛍️
-              </div>
-              <div>
+              <div class="relative z-10">
                 <h3 class="text-xl font-bold mb-2">
-                  Retail and neighborhood shops
+                  Spa and wellness
                 </h3>
-                <p class="opacity-80 text-sm leading-relaxed">
-                  Create a digital loyalty program around the customers who keep
-                  choosing your store.
+                <p class="text-md leading-relaxed">
+                  Encourage clients to return for their next treatment or class.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
+            >
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >🐾</span
+              >
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">Pet grooming</h3>
+                <p class="text-md leading-relaxed">
+                  Build regular grooming visits into a rewarding routine.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
+            >
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >🧺</span
+              >
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">Laundry</h3>
+                <p class="text-md leading-relaxed">
+                  Give customers an extra reason to make your laundry service
+                  their regular choice.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
+            >
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >🚗</span
+              >
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">Car wash</h3>
+                <p class="text-md leading-relaxed">
+                  Turn routine car care into repeat visits with loyalty rewards.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
+            >
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >📚</span
+              >
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">Personal classes</h3>
+                <p class="text-md leading-relaxed">
+                  Reward students for returning to lessons, training, or
+                  coaching sessions.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="relative overflow-hidden bg-[var(--card-bg)] rounded-2xl p-8 border border-[var(--border-color)]"
+            >
+              <span
+                class="pointer-events-none absolute right-0 bottom-0 text-8xl opacity-30 dark:opacity-10"
+                aria-hidden="true"
+                >🛍️</span
+              >
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">
+                  Other retail and service businesses
+                </h3>
+                <p class="text-md leading-relaxed">
+                  Create a loyalty experience that fits the way your customers
+                  shop and return.
                 </p>
               </div>
             </div>
