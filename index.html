@@ -491,11 +491,20 @@
             </p>
           </div>
 
-          <!-- Problem Cards Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Problem Cards Carousel -->
+          <div
+            id="problem-cards"
+            class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-3 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:snap-none"
+            role="region"
+            aria-label="Business growth challenges"
+            aria-roledescription="carousel"
+          >
             <!-- Card 1: High Customer Acquisition Cost -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="1 of 3"
             >
               <div class="space-y-4">
                 <div class="flex items-center gap-4">
@@ -549,7 +558,10 @@
 
             <!-- Card 2: Untapped Revenue Potential -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="2 of 3"
             >
               <div class="space-y-4">
                 <div class="flex items-center gap-4">
@@ -591,7 +603,10 @@
 
             <!-- Card 3: The Risk of Inaction -->
             <div
-              class="bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1"
+              class="w-full shrink-0 snap-center bg-[var(--background)] rounded-2xl p-8 border border-[var(--border-color)] flex flex-col justify-between shadow-sm transition-transform duration-200 hover:-translate-y-1 md:w-auto"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="3 of 3"
             >
               <div class="space-y-4">
                 <div class="flex items-center gap-4">
@@ -630,6 +645,31 @@
                 Attrition to Competitors
               </div>
             </div>
+          </div>
+          <div
+            class="mt-4 flex justify-center gap-2 md:hidden"
+            role="group"
+            aria-label="Choose a challenge"
+          >
+            <button
+              type="button"
+              class="problem-card-indicator h-2 w-6 rounded-full bg-[var(--primary)] transition-all"
+              aria-label="Go to challenge 1"
+              aria-controls="problem-cards"
+              aria-current="true"
+            ></button>
+            <button
+              type="button"
+              class="problem-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to challenge 2"
+              aria-controls="problem-cards"
+            ></button>
+            <button
+              type="button"
+              class="problem-card-indicator h-2 w-2 rounded-full bg-[var(--border-color)] transition-all"
+              aria-label="Go to challenge 3"
+              aria-controls="problem-cards"
+            ></button>
           </div>
         </div>
       </section>
@@ -1658,7 +1698,94 @@
         if (themeToggleMobileBtn)
           themeToggleMobileBtn.addEventListener("click", toggleThemeHandler);
 
-        // 2. Mobile Menu Toggle
+        // 2. Mobile Problem Cards Carousel
+        const problemCards = document.getElementById("problem-cards");
+        const problemCardIndicators = document.querySelectorAll(
+          ".problem-card-indicator",
+        );
+
+        if (problemCards && problemCardIndicators.length) {
+          const slides = problemCards.querySelectorAll(
+            '[aria-roledescription="slide"]',
+          );
+          let activeProblemCard = 0;
+          const mobileViewport = window.matchMedia("(max-width: 767px)");
+          const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+          );
+
+          const setActiveProblemCard = (index) => {
+            activeProblemCard = index;
+            problemCardIndicators.forEach((indicator, indicatorIndex) => {
+              const isActive = indicatorIndex === index;
+              indicator.classList.toggle("w-6", isActive);
+              indicator.classList.toggle("w-2", !isActive);
+              indicator.classList.toggle("bg-[var(--primary)]", isActive);
+              indicator.classList.toggle(
+                "bg-[var(--border-color)]",
+                !isActive,
+              );
+              if (isActive) {
+                indicator.setAttribute("aria-current", "true");
+              } else {
+                indicator.removeAttribute("aria-current");
+              }
+            });
+          };
+
+          const scrollToProblemCard = (index) => {
+            const slide = slides[index];
+            if (!slide) return;
+            const gap =
+              Number.parseFloat(
+                window.getComputedStyle(problemCards).columnGap,
+              ) || 0;
+            problemCards.scrollTo({
+              left: index * (slide.getBoundingClientRect().width + gap),
+              behavior: "smooth",
+            });
+          };
+
+          problemCardIndicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => {
+              scrollToProblemCard(index);
+            });
+          });
+
+          problemCards.addEventListener(
+            "scroll",
+            () => {
+              const firstSlide = slides[0];
+              if (!firstSlide) return;
+              const gap =
+                Number.parseFloat(
+                  window.getComputedStyle(problemCards).columnGap,
+                ) || 0;
+              const stride = firstSlide.getBoundingClientRect().width + gap;
+              setActiveProblemCard(
+                Math.min(
+                  slides.length - 1,
+                  Math.round(problemCards.scrollLeft / stride),
+                ),
+              );
+            },
+            { passive: true },
+          );
+
+          window.setInterval(() => {
+            if (
+              !mobileViewport.matches ||
+              document.hidden ||
+              reducedMotion.matches
+            ) {
+              return;
+            }
+
+            scrollToProblemCard((activeProblemCard + 1) % slides.length);
+          }, 5500);
+        }
+
+        // 3. Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById("mobile-menu-btn");
         const mobileMenu = document.getElementById("mobile-menu");
         const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
@@ -1688,7 +1815,7 @@
           }
         });
 
-        // 3. FAQ Accordion Toggle (Vanilla JS)
+        // 4. FAQ Accordion Toggle (Vanilla JS)
         const faqToggles = document.querySelectorAll(".faq-toggle");
 
         faqToggles.forEach((button) => {
